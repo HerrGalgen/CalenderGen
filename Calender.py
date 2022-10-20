@@ -12,7 +12,7 @@ class Calender:
         for lesson in lessons:
             event = Event()
 
-            event.add('summary', str(lesson.get_hour()) + ": " + str(lesson.get_subject()) + "_" + str(lesson.get_teacher()))
+            event.add('summary', str(int(lesson.get_hour())) + ": " + str(lesson.get_subject()) + "_" + str(lesson.get_teacher()))
             event.add('dtstart', lesson.get_start())
             event.add('dtend', lesson.get_end())
 

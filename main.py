@@ -8,21 +8,6 @@ reader = ExcelReader()
 #Read excel:
 
 reader.read_file()
-#
-# monday = [Lesson("E114", "PuG", "WaMa", 1,),
-#           Lesson("E114", "ITaG", "MaMa", 2),
-#           Lesson("O014", "ITP", "ReEv", 3),
-#           Lesson("O014", "ITP", "ReEv", 4),
-#           Lesson("O014", "ITP", "ReEv", 5),
-#           Lesson("O014", "ITP", "ReEv", 6),
-#           Lesson("O014", "ITP", "ReEv", 7),
-#           Lesson("O014", "ITP", "ReEv", 8),
-#           Lesson("O014", "ITP", "ReEv", 9)
-#           ]
-#
-# monday = Lesson.calc_times(monday)
-# cal.add_day(monday)
-#
 
 days = reader.get_days()
 
