@@ -1,12 +1,6 @@
-import icalendar
-from icalendar import Calendar, Event, vCalAddress, vText
-import pytz
+from icalendar import Calendar, Event, vText
 import os
 from pathlib import Path
-
-# Adding events to calendar
-
-
 
 
 class Calender:
@@ -14,17 +8,17 @@ class Calender:
     def __init__(self):
         self.cal = Calendar()
 
-    def add_event(self, lesson):
+    def add_day(self, lessons):
+        for lesson in lessons:
+            event = Event()
 
-        event = Event()
+            event.add('summary', str(lesson.get_duration()) + 'x ' + lesson.get_subject() + "_" + lesson.get_teacher())
+            event.add('dtstart', lesson.get_start())
+            event.add('dtend', lesson.get_end())
 
-        event.add('summary', lesson.subject + "_" + lesson.teacher)
-        event.add('dtstart', lesson.start)
-        event.add('dtend', lesson.end)
+            event['location'] = vText(lesson.room)
 
-        event['location'] = vText(lesson.room)
-
-        self.cal.add_component(event)
+            self.cal.add_component(event)
 
     def gen_cal(self):
 
@@ -33,5 +27,3 @@ class Calender:
         f = open(os.path.join(directory, 'example.ics'), 'wb')
         f.write(self.cal.to_ical())
         f.close()
-
-
