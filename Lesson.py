@@ -41,10 +41,17 @@ class Lesson:
     def calc_times(lessons):
         now = datetime.now(pytz.timezone('Europe/Berlin'))
 
-        for i in range(len(lessons)):
+        lesson_count = len(lessons)
+
+        for i in range(lesson_count):
             lessons[i].start = datetime(now.year, now.month, now.day, lessons[i].start_h_normal[lessons[i].hour - 1],
                                         lessons[i].start_m_normal[lessons[i].hour - 1], 0,
                                         tzinfo=pytz.timezone('Europe/Berlin'))
+
+            if lesson_count > 2 and i == 2 and lessons[2].dur > 1:
+                lessons[2].start += timedelta(hours=0, minutes=20, seconds=0)
+            elif lesson_count > 3 and i == 3:
+                lessons[3].start += timedelta(hours=0, minutes=20, seconds=0)
 
             lessons[i].end = lessons[i].start + timedelta(hours=0, minutes=(45*lessons[i].dur), seconds=0)
 
