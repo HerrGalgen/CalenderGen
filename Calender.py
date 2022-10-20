@@ -24,6 +24,6 @@ class Calender:
 
         directory = str(Path(__file__).parent.parent) + "/"
         print("ics file will be generated at ", directory)
-        f = open(os.path.join(directory, 'example.ics'), 'wb')
+        f = open(os.path.join(directory, 'timetable.ics'), 'wb')
         f.write(self.cal.to_ical())
         f.close()
