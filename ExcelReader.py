@@ -9,20 +9,21 @@ class ExcelReader:
 
     def __init__(self):
         self.days = {}
+        self.filepath = ""
 
     def get_days(self):
         return self.days
 
     def read_file(self):
 
-        data = pd.read_excel(r'C:\Users\kreuz\Desktop\Stundenplan.xlsx')
+        data = pd.read_excel(self.filepath)
         mon_date = data.keys()[1]
         tue_date = data.keys()[5]
         wed_date = data.keys()[9]
         thu_date = data.keys()[13]
         fri_date = data.keys()[17]
 
-        data = pd.read_excel(r'C:\Users\kreuz\Desktop\Stundenplan.xlsx', skiprows=1)
+        data = pd.read_excel(self.filepath, skiprows=1)
         df = pd.DataFrame(data)
 
         monday = df.iloc[:, 0:4]
@@ -85,3 +86,6 @@ class ExcelReader:
 
     def get_lessons(self):
         return self.days
+
+    def set_filepath(self, path):
+        self.filepath = path
