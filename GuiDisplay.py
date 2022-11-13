@@ -28,6 +28,7 @@ file_menu = Menu(m, tearoff=False)
 
 m.add_cascade(label="Datei", menu=file_menu)
 file_menu.add_command(label="Excel öffnen", command=excelDisplay.open_file)
+file_menu.add_command(label="Excel schließen", command=excelDisplay.close_file)
 file_menu.add_command(label="Exel to ics", command=excelmain.create_ics)
 
 # Add a Label widget to display the file content

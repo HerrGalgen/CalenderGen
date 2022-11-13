@@ -12,7 +12,7 @@ class ShowExcel:
         self.treeScroll = Scrollbar(frame)
         self.treeScroll.configure(command=self.tree.xview)
         self.tree.configure(xscrollcommand=self.treeScroll.set)
-        self.treeScroll.pack(side=RIGHT, fill=BOTH)
+
     # Define a function for opening the file
     def open_file(self):
         filename = filedialog.askopenfilename(title="Open a File",
@@ -32,6 +32,9 @@ class ShowExcel:
         self.tree["column"] = list(df.columns)
         self.tree["show"] = "headings"
 
+        self.treeScroll.pack(side=RIGHT, fill=BOTH)
+        self.treeScroll.config(command=None)
+
         # For Headings iterate over the columns
         for col in self.tree["column"]:
             self.tree.heading(col, text=col)
@@ -42,6 +45,10 @@ class ShowExcel:
             self.tree.insert("", "end", values=row)
 
         self.tree.pack()
+
+    def close_file(self):
+        self.treeScroll.pack_forget()
+        self.tree.pack_forget()
 
     # Clear the Treeview Widget
     def clear_treeview(self):
